@@ -3,12 +3,20 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import os
+from pathlib import Path
 
-# Carrega as variáveis do arquivo .env
-load_dotenv()
+# Carrega o .env da raiz do projeto, independentemente da pasta atual.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(PROJECT_ROOT / ".env")
 
 # Pega a URL do banco do arquivo .env
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL nao foi definida. Copie .env.example para .env e "
+        "preencha a URL de conexao do banco."
+    )
 
 # Cria o "motor" de conexão com o banco
 engine = create_engine(DATABASE_URL)

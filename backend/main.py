@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from database import engine, Base
-from routers import produtos  # importa as rotas de produtos
+from backend.database import engine, Base
+from backend.routers import produtos  # importa as rotas de produtos
 
 # Cria todas as tabelas no banco automaticamente (se não existirem)
 Base.metadata.create_all(bind=engine)
