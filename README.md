@@ -41,7 +41,7 @@ DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco
 
 5. Iniciar a API
 Bash
-uvicorn app.main:app --reload
+uvicorn backend.main:app --reload
 Acesse a documentação interativa em: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 🧪 Executando os Testes Automatizados
